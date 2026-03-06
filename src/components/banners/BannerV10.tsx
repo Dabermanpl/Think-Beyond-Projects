@@ -38,7 +38,7 @@ const BannerV10 = React.forwardRef<HTMLDivElement>((_, ref) => {
     return (
         <div ref={ref} className="banner v3 v10 run-animation">
             <div className="logo-container">
-                <img src="/LOGO_TB.svg" alt="Think Beyond" className="brand-logo" />
+                <img src="LOGO_TB.svg" alt="Think Beyond" className="brand-logo" />
             </div>
             <div className="content glass">
                 <h2 ref={headlineRef} className="headline animate-text">Salesforce<br />Partner</h2>
@@ -52,7 +52,7 @@ const BannerV10 = React.forwardRef<HTMLDivElement>((_, ref) => {
                 </a>
             </div>
             <div className="video-container">
-                <video src="/smile.mp4" autoPlay loop muted playsInline></video>
+                <video src="smile.mp4" autoPlay loop muted playsInline></video>
             </div>
         </div>
     )

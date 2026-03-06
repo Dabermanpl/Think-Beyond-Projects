@@ -5,7 +5,7 @@ const BannerV8 = React.forwardRef<HTMLDivElement>((_, ref) => (
         <div className="v2-stripe"></div>
         <div className="v2-line"></div>
         <div className="logo-container">
-            <img src="/LOGO_TB.svg" alt="Think Beyond" className="brand-logo" />
+            <img src="LOGO_TB.svg" alt="Think Beyond" className="brand-logo" />
         </div>
         <div className="content">
             <h2 className="headline">Salesforce<br />Partner</h2>
@@ -19,7 +19,7 @@ const BannerV8 = React.forwardRef<HTMLDivElement>((_, ref) => (
             </a>
         </div>
         <div className="portrait-container">
-            <img src="/portrait.png" alt="Marcin" className="portrait-img" />
+            <img src="portrait.png" alt="Marcin" className="portrait-img" />
         </div>
     </div>
 ))

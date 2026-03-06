@@ -3,7 +3,7 @@ import React from 'react'
 const BannerV9 = React.forwardRef<HTMLDivElement>((_, ref) => (
     <div ref={ref} className="banner v9">
         <div className="logo-container">
-            <img src="/LOGO_TB.svg" alt="Think Beyond" className="brand-logo" />
+            <img src="LOGO_TB.svg" alt="Think Beyond" className="brand-logo" />
         </div>
         <div className="holo-bg"></div>
         <div className="content glass-dark">
@@ -18,7 +18,7 @@ const BannerV9 = React.forwardRef<HTMLDivElement>((_, ref) => (
             </a>
         </div>
         <div className="portrait-container">
-            <img src="/portrait2.png" alt="Marcin" className="portrait-img" />
+            <img src="portrait2.png" alt="Marcin" className="portrait-img" />
         </div>
     </div>
 ))
