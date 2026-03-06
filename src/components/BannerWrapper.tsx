@@ -47,7 +47,7 @@ export default function BannerWrapper({
                     {isVideo ? 'Pobierz (MP4)' : 'Pobierz'}
                 </button>
             </div>
-            {React.cloneElement(children as React.ReactElement, { ref: bannerRef })}
+            {React.cloneElement(children as React.ReactElement<any>, { ref: bannerRef })}
         </div>
     )
 }
