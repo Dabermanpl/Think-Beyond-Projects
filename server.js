@@ -23,9 +23,18 @@ app.get('/api/render-v10', (req, res) => {
         // Zwracamy informację o sukcesie i ścieżki do pobrania plików
         res.json({
             success: true,
-            mp4Url: '/Wersja_10_animacja.mp4'
+            mp4Url: '/api/download-v10'
         });
     });
+});
+
+app.get('/api/download-v10', (req, res) => {
+    const filePath = path.join(__dirname, 'Wersja_10_animacja.mp4');
+    if (fs.existsSync(filePath)) {
+        res.download(filePath, 'Wersja_10_animacja.mp4');
+    } else {
+        res.status(404).send('Plik jeszcze nie został wygenerowany.');
+    }
 });
 
 const PORT = 3000;

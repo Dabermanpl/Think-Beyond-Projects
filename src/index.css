@@ -678,8 +678,11 @@ body {
     position: relative;
     z-index: 100;
     transform: translateY(15px);
-    animation: textFadeIn 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
     white-space: pre-wrap;
+}
+
+.v10.run-animation .fade-char {
+    animation: textFadeIn 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
 }
 
 @keyframes textFadeIn {
@@ -720,9 +723,4 @@ body {
     z-index: 10;
     position: relative;
     pointer-events: auto;
-}
-
-.banner-cta:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(225, 78, 216, 0.45);
 }
