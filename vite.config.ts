@@ -3,6 +3,7 @@ import react from '@vitejs/plugin-react'
 import locatorBabelJsx from '@locator/babel-jsx'
 
 export default defineConfig(({ mode }) => ({
+    base: '/Think-Beyond/',
     plugins: [
         react({
             babel: {
