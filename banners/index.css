@@ -1,0 +1,728 @@
+:root {
+    --brand-pink: #E14ED8;
+    --brand-dark: #0E1021;
+    --brand-gray-light: #C5C9ED;
+    --brand-gray-dark: #616796;
+    --white: #FFFFFF;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Satoshi', sans-serif;
+    background-color: #000000;
+    color: var(--white);
+    padding: 40px;
+    min-height: 100vh;
+}
+
+.page-header {
+    text-align: left;
+    margin-bottom: 50px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #444444;
+}
+
+.page-header h1 {
+    font-family: 'Satoshi', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 5px;
+}
+
+.page-header p {
+    font-size: 1.1rem;
+    color: #444444;
+    /* Szary jak separatory */
+}
+
+
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Wrapper for Banner and Header */
+.banner-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* Banner image first, header/controls below */
+.banner-wrapper>.banner-header {
+    order: 2;
+}
+
+.banner-wrapper>.banner {
+    order: 1;
+}
+
+.banner-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 5px 0 5px;
+}
+
+.banner-header h3 {
+    font-size: 12px;
+    font-weight: 400;
+    color: #888888;
+    letter-spacing: 0.05em;
+}
+
+.download-btn {
+    background-color: rgba(255, 255, 255, 0.5);
+    border: none;
+    color: #000000;
+    padding: 6px 14px;
+    border-radius: 100px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-family: 'Satoshi', sans-serif;
+}
+
+.download-btn:hover {
+    background-color: rgba(255, 255, 255, 1);
+    color: #000000;
+    transform: none;
+    box-shadow: none;
+}
+
+.download-btn svg {
+    margin-bottom: 2px;
+}
+
+/* Base Banner Style */
+.banner {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    border-radius: 0;
+    /* Zmiana na 0px zgodnie z prośbą */
+    overflow: hidden;
+    background: var(--brand-dark);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+    display: flex;
+    flex-direction: column;
+    padding: 10%;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    container-type: inline-size;
+}
+
+.banner .content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: flex-end;
+    padding-bottom: 5cqi;
+    position: relative;
+    /* Wymagane dla gradientu pseudo-elementu */
+}
+
+/* Gradient pod tekstem – przyklejony do dolnej krawędzi banera */
+.banner::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 60%;
+    /* Zwiększono pokrycie */
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.75) 0%, transparent 100%);
+    z-index: 1;
+    pointer-events: none;
+}
+
+.banner .subheadline {
+    z-index: 2;
+    /* nad zdjęciem */
+    position: relative;
+    max-width: 80%;
+}
+
+.banner .headline {
+    z-index: 2;
+    /* nad zdjęciem */
+    position: relative;
+}
+
+.banner .portrait-container {
+    position: absolute;
+    bottom: -5px;
+    /* Przycięcie ewentualnej krzywej krawędzi zdjęcia na dole */
+    left: -60px;
+    /* Dodatkowe 20px w lewo (było -40px) */
+    width: 65%;
+    /* Przywrócono stałą szerokość zamiast samego height */
+    height: 95%;
+    /* Zdjęcie sięga wyżej pod logo */
+    z-index: 1;
+    /* Pomiędzy tekstem a tłem */
+    pointer-events: none;
+}
+
+.banner .portrait-img {
+    height: 100%;
+    width: auto;
+    object-fit: cover;
+    object-position: bottom left;
+    filter: drop-shadow(10px 10px 20px rgba(14, 16, 33, 0.6));
+    opacity: 0.9;
+}
+
+.banner:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
+}
+
+/* Typography Base */
+.headline {
+    font-family: 'Satoshi', sans-serif;
+    font-size: 10.1cqi;
+    /* Zmniejszono z 12.6cqi o 20% */
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 5cqi;
+    letter-spacing: -0.02em;
+    word-break: break-word;
+    /* Wymuszamy łamanie słów, by się mieściły */
+    hyphens: auto;
+}
+
+.subheadline {
+    font-size: 5cqi;
+    line-height: 1.4;
+    font-weight: 500;
+    /* medium */
+    color: #ffffff;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    z-index: 10;
+    position: relative;
+    /* added */
+}
+
+.logo-container.dark {
+    color: var(--brand-dark);
+}
+
+.content.dark .headline,
+.content.dark .subheadline {
+    color: var(--brand-dark);
+}
+
+.content.dark .subheadline {
+    color: var(--brand-gray-dark);
+}
+
+.brand-logo {
+    height: 13.5cqi;
+    /* Używamy cqi zamiast 42px by logo skalowało się proporcjonalnie w Puppeteerze (powiększone o 50%) */
+    width: auto;
+    object-fit: contain;
+}
+
+.logo-container.dark .brand-logo {
+    filter: brightness(0) drop-shadow(0px 2px 4px rgba(14, 16, 33, 0.2));
+}
+
+.content {
+    z-index: 10;
+    position: relative;
+    height: 100%;
+}
+
+/* ================== V1: Deep Violet Gradient ================== */
+.v1 {
+    /* usunięto gradient, przekazano go do bg-blur-container */
+    background: var(--brand-dark);
+}
+
+.v1 .bg-blur-container {
+    position: absolute;
+    top: -60px;
+    /* Zapas na blur żeby krawędzie nie wyciekały */
+    left: -60px;
+    right: -60px;
+    bottom: -60px;
+    background: linear-gradient(135deg, var(--brand-dark) 0%, #1a1e38 100%);
+    filter: blur(60px);
+    z-index: 1;
+}
+
+.v1 .headline {
+    background: linear-gradient(90deg, #FFFFFF, var(--brand-gray-light));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.v1 .abstract-shape {
+    position: absolute;
+    border-radius: 50%;
+    /* filter: blur(40px); usunięte, teraz blurujemy całe tło na 60px */
+}
+
+.v1 .shape-1 {
+    width: 80%;
+    height: 80%;
+    background: rgba(197, 201, 237, 0.15);
+    top: -20%;
+    right: -20%;
+}
+
+.v1 .shape-2 {
+    width: 60%;
+    height: 60%;
+    background: rgba(225, 78, 216, 0.15);
+    bottom: -10%;
+    left: -10%;
+}
+
+/* ================== V2: Bold Dark Variation ================== */
+.v2 {
+    background: radial-gradient(circle at 100% 100%, var(--brand-pink), transparent 60%),
+        radial-gradient(circle at 0% 0%, var(--brand-gray-dark), transparent 60%),
+        var(--brand-dark);
+}
+
+/* Blur overlay – miękkie rozmyte tło jak w V3 */
+.v2 .v2-stripe {
+    position: absolute;
+    inset: -30%;
+    background: radial-gradient(circle at 70% 80%, var(--brand-pink), transparent 55%),
+        radial-gradient(circle at 20% 20%, var(--brand-gray-dark), transparent 55%);
+    filter: blur(50px);
+    opacity: 0.6;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* Pionowa linia usunięta – zastąpiona blurred tłem */
+.v2 .v2-line {
+    display: none;
+}
+
+/* Badge nad nagłówkiem */
+.v2 .v2-badge {
+    display: inline-block;
+    font-size: 3cqi;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    /* Gradient na tekście */
+    background: linear-gradient(90deg, #E14ED8, #8160FC);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    border: 1.5px solid transparent;
+    position: relative;
+    padding: 0.4em 0.9em;
+    border-radius: 100px;
+    margin-bottom: 3cqi;
+    z-index: 2;
+    width: fit-content;
+}
+
+/* Gradient border via ::before */
+.v2 .v2-badge::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1.5px;
+    background: linear-gradient(90deg, #E14ED8, #8160FC);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+}
+
+.v2 .headline {
+    background: linear-gradient(135deg, #E14ED8, #C5C9ED);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    z-index: 2;
+    position: relative;
+}
+
+/* ================== V3: Glassmorphism na kolorowym tle ================== */
+.v3 {
+    background: radial-gradient(circle at 100% 100%, var(--brand-pink), transparent 60%),
+        radial-gradient(circle at 0% 0%, var(--brand-gray-dark), transparent 60%),
+        var(--brand-dark);
+}
+
+.v3 .content.glass {
+    padding: 0;
+    border-radius: 0;
+}
+
+.v3 .headline {
+    background: linear-gradient(90deg, #E14ED8, #8160FC);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    position: relative;
+    z-index: 2;
+}
+
+/* ================== V4: Modern Split ================== */
+.v4 {
+    background: var(--brand-dark);
+}
+
+.v4 .split-bg {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 30%;
+    background: linear-gradient(135deg, var(--brand-gray-dark), var(--brand-pink));
+    clip-path: polygon(20% 0, 100% 0, 100% 100%, 0 100%);
+    z-index: 1;
+}
+
+/* ================== V5: Minimalist Accent ================== */
+.v5 {
+    background: var(--brand-dark);
+}
+
+.v5 .headline {
+    color: var(--brand-gray-light);
+    text-shadow: 0 4px 10px rgba(197, 201, 237, 0.3);
+}
+
+.v5 .circle {
+    position: absolute;
+    border-radius: 50%;
+    border: 2px solid rgba(197, 201, 237, 0.2);
+    z-index: 1;
+}
+
+.v5 .c1 {
+    width: 120%;
+    height: 120%;
+    top: -10%;
+    right: -50%;
+}
+
+.v5 .c2 {
+    width: 80%;
+    height: 80%;
+    bottom: -20%;
+    left: -20%;
+    border-color: rgba(255, 255, 255, 0.05);
+}
+
+/* ================== V6: Minimalizm ================== */
+.v6 {
+    background: var(--brand-dark);
+}
+
+.v6 .outline-text {
+    color: #ffffff;
+}
+
+.v6 .headline,
+.v6 .subheadline {
+    color: #ffffff;
+}
+
+.v6 .subtle-grid {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-size: 20px 20px;
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    z-index: 1;
+}
+
+/* ================== V7: Neon Glow ================== */
+.v7 {
+    background: var(--brand-dark);
+    overflow: hidden;
+}
+
+.v7 .glow-orb {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50%;
+    height: 50%;
+    background: var(--brand-pink);
+    filter: blur(60px);
+    border-radius: 50%;
+    opacity: 0.6;
+    z-index: 1;
+    animation: pulse 4s infinite alternate;
+}
+
+@keyframes pulse {
+    0% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.6;
+    }
+
+    100% {
+        transform: translate(-50%, -50%) scale(1.2);
+        opacity: 0.8;
+    }
+}
+
+/* ================== V8: Teal Glow Variation ================== */
+.v8 {
+    background: linear-gradient(135deg, #061a20 0%, #0d2b38 50%, #0f1e3a 100%);
+}
+
+/* świetlisty orb 1 — teal */
+.v8 .v8-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(55px);
+    z-index: 0;
+    pointer-events: none;
+}
+
+.v8 .v8-orb1 {
+    width: 55%;
+    height: 55%;
+    background: radial-gradient(circle, rgba(0, 188, 180, 0.35) 0%, transparent 70%);
+    top: -10%;
+    right: -10%;
+}
+
+.v8 .v8-orb2 {
+    width: 40%;
+    height: 40%;
+    background: radial-gradient(circle, rgba(112, 70, 255, 0.3) 0%, transparent 70%);
+    bottom: 10%;
+    left: 20%;
+}
+
+/* subtelne linie — efekt scan */
+.v8 .v8-scanline {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background-image: repeating-linear-gradient(to bottom,
+            transparent,
+            transparent 3px,
+            rgba(255, 255, 255, 0.015) 3px,
+            rgba(255, 255, 255, 0.015) 4px);
+}
+
+/* Chip CTA */
+.v8 .v8-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4em;
+    font-size: 3.2cqi;
+    font-weight: 600;
+    color: #00bcb4;
+    border: 1px solid rgba(0, 188, 180, 0.35);
+    background: rgba(0, 188, 180, 0.08);
+    padding: 0.4em 0.9em;
+    border-radius: 100px;
+    margin-top: 5cqi;
+    /* Wyrównano z margin-bottom headline (5cqi) dla spójnego rytmu */
+    letter-spacing: 0.04em;
+    width: fit-content;
+    z-index: 2;
+    position: relative;
+}
+
+/* ================== V9: Holographic ================== */
+.v9 {
+    background: var(--brand-dark);
+}
+
+.v9 .holo-bg {
+    position: absolute;
+    inset: -50%;
+    background: conic-gradient(from 135deg, var(--brand-gray-light), var(--brand-gray-dark), var(--brand-pink), var(--brand-gray-light));
+    filter: blur(40px);
+    opacity: 0.7;
+    /* animation usunięta */
+    transform: rotate(135deg);
+    z-index: 1;
+}
+
+/* @keyframes rotateHolo usunięto – animacja wyłączona */
+
+/* Przyciemnienie na górze, żeby logo było widoczne */
+.v9::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 35%;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.55) 0%, transparent 100%);
+    z-index: 2;
+    pointer-events: none;
+}
+
+.v9 .logo-container {
+    position: relative;
+    z-index: 10;
+    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.6));
+}
+
+
+
+.v9 .giant-logo-bg {
+    position: absolute;
+    font-family: 'Satoshi', sans-serif;
+    font-size: 50cqi;
+    font-weight: 900;
+    color: rgba(255, 255, 255, 0.03);
+    top: -10%;
+    right: -10%;
+    line-height: 1;
+    z-index: 2;
+    pointer-events: none;
+}
+
+/* ================== V10: Video Background (Klon V3) ================== */
+.v10 {
+    overflow: hidden;
+    /* Upewniamy się, że wideo nie wystaje za rogi banera */
+}
+
+.v10 .video-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    /* Za tekstem */
+}
+
+.v10 .video-container video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Fit wideo do rozmiaru banera bez zniekształceń */
+    object-position: calc(50% + 50px) calc(50% + 10px);
+    /* Wyśrodkowanie wideo + przesunięcie 50px w prawo i 10px w dół */
+}
+
+/* Wymuszenie widoczności tekstu ponad video w V10 */
+.v10 .content {
+    position: relative !important;
+    z-index: 999 !important;
+}
+
+/* Ponieważ V10 bazuje na V3, ukrywamy oryginalny background i gradient dla czystości filmu, zachowując tylko dolny gradient z .banner::after */
+.v10 {
+    background: var(--brand-dark);
+}
+
+/* Wersja 10 (klon V3) dziedziczyła gradient nałożony na tekst. 
+   Po rozbiciu na spany (-webkit-text-fill-color: transparent) uciekało tło, 
+   więc nadpisujemy "Salesforce Partner" na jednolity, solidny kolor. */
+.v10 .headline {
+    background: none;
+    -webkit-background-clip: initial;
+    background-clip: initial;
+    -webkit-text-fill-color: initial;
+    color: var(--brand-pink);
+    /* Lity kolor różowy nawiązujący do V3 */
+}
+
+/* ================== V10: Text Letter Animation ================== */
+.v10 .animate-text {
+    opacity: 1;
+    position: relative;
+    z-index: 20;
+    display: block;
+    width: 100%;
+}
+
+/* Zapobieganie rozciąganiu się przycisku mimo posiadania klasy .animate-text */
+.v10 a.banner-cta.animate-text {
+    display: inline-flex;
+    width: fit-content;
+}
+
+.fade-char {
+    display: inline-block;
+    opacity: 0;
+    position: relative;
+    z-index: 100;
+    transform: translateY(15px);
+    animation: textFadeIn 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+    white-space: pre-wrap;
+}
+
+@keyframes textFadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ================== Global CTA Button (Zobacz więcej) ================== */
+.banner-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    gap: 8px;
+    /* space between text and arrow */
+    margin-top: 15px;
+    padding: 10px 24px;
+    background: linear-gradient(90deg, #E14ED8, #8160FC);
+    /* Pink to Purple gradient matched with image */
+    /* Pink to Purple gradient matched with image */
+    color: var(--white);
+    font-family: 'Satoshi', sans-serif;
+    font-size: 4.5cqi;
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: 100px;
+    /* Fully rounded as per previous requirement */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 4px 15px rgba(225, 78, 216, 0.3);
+    /* Colored subtble shadow */
+    z-index: 10;
+    position: relative;
+    pointer-events: auto;
+}
+
+.banner-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(225, 78, 216, 0.45);
+}
