@@ -97,12 +97,7 @@ body {
     font-family: 'Satoshi', sans-serif;
 }
 
-.download-btn:hover {
-    background-color: rgba(255, 255, 255, 1);
-    color: #000000;
-    transform: none;
-    box-shadow: none;
-}
+
 
 .download-btn svg {
     margin-bottom: 2px;
@@ -186,10 +181,7 @@ body {
     opacity: 0.9;
 }
 
-.banner:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
-}
+
 
 /* Typography Base */
 .headline {
@@ -720,9 +712,4 @@ body {
     z-index: 10;
     position: relative;
     pointer-events: auto;
-}
-
-.banner-cta:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(225, 78, 216, 0.45);
 }
